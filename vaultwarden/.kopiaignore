@@ -1,0 +1,6 @@
+*
+!docker-compose.yml
+!data/
+data/*
+!data/db.sqlite3
+!data/rsa_key.pem

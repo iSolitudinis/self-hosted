@@ -1,0 +1,13 @@
+services:
+  vaultwarden:
+    container_name: vaultwarden
+    image: vaultwarden/server:latest
+    restart: unless-stopped
+    networks:
+      - gateway
+    volumes:
+      - ./data:/data
+
+networks:
+  gateway:
+    external: true

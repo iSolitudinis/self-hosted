@@ -1,0 +1,22 @@
+services:
+  warp:
+    container_name: warp
+    image: caomingjun/warp
+    restart: unless-stopped
+    networks:
+      - gateway
+    device_cgroup_rules:
+      - 'c 10:200 rwm'
+    environment:
+      - WARP_SLEEP=2
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./data:/var/lib/cloudflare-warp
+
+networks:
+  gateway:
+    external: true
